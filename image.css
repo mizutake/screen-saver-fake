@@ -1,0 +1,19 @@
+p{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin:0 auto;
+  position:relative;
+  }
+img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* bottom: 0;
+  right: 0;
+
+  margin: auto;*/
+  height: 100%;
+  widows: 100%;
+  /* text-align: center;*/
+ }  
