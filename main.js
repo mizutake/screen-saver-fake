@@ -15,7 +15,8 @@ window.addEventListener('load', function(){
       './image/img7.jpg',
       './image/050Yamasha.jpg',
       './image/043sukagamino.jpg',
-      './image/033Kazuki17103.jpg'];
+      './image/033Kazuki17103.jpg'
+    ];
     let index = 0;
     function crossfade_image() {
       $("img.active").animate({'opacity': 0}, ANIMATE_TIME, "linear", function(){

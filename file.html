@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>filesave</title>
+</head>
+<body>
+  <div class="container">
+    <button id="fileSelect" type="button" class="btn btn-primary btn-lg btn-block">ファイル選択及び保存</button>
+  </div>
+<script>
+  window.jQuery = window.$ = require('./bower_components/jquery/dist/jquery.min.js');
+  </script>
+  <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  
+  <script>
+  'use strict';
+
+const remote = require('electron').remote;
+const Dialog = remote.dialog;
+const browserWindow = remote.BrowserWindow;
+let fs = require('fs');
+
+
+
+$(function(){
+    $('#fileSelect').click(() => {
+        Dialog.showOpenDialog(null, {
+            properties: ['openFile'],
+            title: 'ファイル(単独選択)',
+            defaultPath: '.',
+            filters: [
+                {name: 'jpgファイル', extensions: ['jpg']},
+                {name: 'JSONファイル', extensions: ['json']}
+            ]
+        }, (fileNames) => {
+            console.log(fileNames);
+             fileNames[0].split('/').pop();
+             console.log(fileNames[0].split('/').pop());//fsを使う
+             fs.writeFileSync('./iamge' + fileNames, fs.read('image', 'utf8'));
+            });    
+        });  //  fs.writeFileSync('./iamge' + pas(), fs.readFile(savedFiles, 'utf8'));
+});
+</script>
+</body>
+</html>

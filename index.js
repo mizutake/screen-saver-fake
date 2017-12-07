@@ -30,29 +30,20 @@ app.on('ready', function() {
         nodeIntegration: false
       }
     });
+   // mainWindow.setIgnoreMouseEvents(true);
     mainWindow.maximize();
     mainWindow.openDevTools();    
   mainWindow.loadURL('file://' + __dirname + '/index.html');
   let tray = new Tray(__dirname + '/image/icon.jpg');
   const contextMenu = Menu.buildFromTemplate([
-    {label: '画像追加(jpgでお願いします)', type: 'normal',click: function() {
-      // let request = require('request');
-      // let fs = require('fs');
-      
-      //  let url = ;
-      
-      // request(
-      //     {method: 'GET', url: url, encoding: null},
-      //     function (error, response, body){
-      //         if(!error && response.statusCode === 200){
-      //             fs.writeFileSync('a.jpg', body, 'binary');
-      //         }
-      //     }
-      // );
-       console.log('')}}, //保存を考える(配列に組み込む){ファインダーを開くかドラックアンドドロップする}
-    {label: 'separator', type: 'separator'},
-    {label: 'about', type: 'normal'},
-    {label: '終了', type: 'normal', click: function() {app.quit()}}
+    {
+      label: '画像追加', type: 'normal', click: function() { 
+      let save = new BrowserWindow({ width: 400, height: 300 });
+      save.loadURL('file://' + __dirname + '/file.html');
+      save.show();
+      }
+    },
+    {label: '終了', type: 'normal', click: function() {app.quit()}},
   ])
   tray.setToolTip('This is application.')
   tray.setContextMenu(contextMenu)
